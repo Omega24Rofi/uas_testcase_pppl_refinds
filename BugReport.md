@@ -1,219 +1,220 @@
-# Bug Report - RefindsppPL Application Testing
+# Laporan Bug - Pengujian Aplikasi Refinds
 
-## Bug #001: Login Page - Missing Email Format Validation
+## Bug #001: Halaman Login - Tidak Ada Validasi Format Email
 
-**Bug ID:** BUG-001  
-**Date:** June 15, 2025  
-**Reporter:** Test Team  
-**Severity:** Medium  
-**Priority:** High  
-**Status:** Open
+**ID Bug:** BUG-001  
+**Tanggal:** 15 Juni 2025  
+**Pelapor:** Tim Pengujian  
+**Tingkat Keparahan:** Sedang  
+**Prioritas:** Tinggi  
+**Status:** Terbuka
 
-**Summary:** Login form accepts invalid email format without validation
+**Ringkasan:** Form login menerima format email yang tidak valid tanpa validasi
 
-**Steps to Reproduce:**
+**Langkah untuk Mereproduksi:**
 
-1. Navigate to Login page (http://localhost:3000/login)
-2. Enter invalid email: "invalid-email" (without @ symbol)
-3. Enter valid password: "rofifaja@gmail.com"
-4. Click Login button
+1. Navigasi ke halaman Login (http://localhost:3000/login)
+2. Masukkan email tidak valid: "email-invalid" (tanpa simbol @)
+3. Masukkan password valid: "rofifaja@gmail.com"
+4. Klik tombol Login
 
-**Expected Result:**
+**Hasil yang Diharapkan:**
 
-- Error message should display: "Please enter a valid email format"
-- Login should not proceed
+- Pesan error harus ditampilkan: "Silakan masukkan format email yang valid"
+- Login tidak boleh dilanjutkan
 
-**Actual Result:**
+**Hasil Aktual:**
 
-- No validation error shown
-- Login attempt proceeds (may result in server error or unexpected behavior)
+- Tidak ada pesan error validasi yang ditampilkan
+- Proses login tetap dilanjutkan (dapat menyebabkan error server atau perilaku tidak terduga)
 
-**Environment:**
+**Lingkungan Pengujian:**
 
 - Browser: Chrome 91+
 - OS: Windows
-- Application URL: http://localhost:3000
+- URL Aplikasi: http://localhost:3000
 
-**Test Case Reference:** TC02
-
----
-
-## Bug #002: Login Page - Missing Required Field Validation
-
-**Bug ID:** BUG-002  
-**Date:** June 15, 2025  
-**Reporter:** Test Team  
-**Severity:** Medium  
-**Priority:** High  
-**Status:** Open
-
-**Summary:** Login form allows submission with empty email field
-
-**Steps to Reproduce:**
-
-1. Navigate to Login page
-2. Leave email field empty
-3. Enter password: "validpassword"
-4. Click Login button
-
-**Expected Result:**
-
-- Error message: "Email is required"
-- Form should not submit
-
-**Actual Result:**
-
-- No validation error
-- Form submission attempted
-
-**Test Case Reference:** TC04
+**Referensi Kasus Uji:** TC02
 
 ---
 
-## Bug #003: Login Page - Missing Password Validation
+## Bug #002: Halaman Login - Tidak Ada Validasi Field Wajib
 
-**Bug ID:** BUG-003  
-**Date:** June 15, 2025  
-**Reporter:** Test Team  
-**Severity:** Medium  
-**Priority:** High  
-**Status:** Open
+**ID Bug:** BUG-002  
+**Tanggal:** 15 Juni 2025  
+**Pelapor:** Tim Pengujian  
+**Tingkat Keparahan:** Sedang  
+**Prioritas:** Tinggi  
+**Status:** Terbuka
 
-**Summary:** Login form allows submission with empty password field
+**Ringkasan:** Form login memungkinkan submit dengan field email kosong
 
-**Steps to Reproduce:**
+**Langkah untuk Mereproduksi:**
 
-1. Navigate to Login page
-2. Enter valid email: "rofifaja@gmail.com"
-3. Leave password field empty
-4. Click Login button
+1. Navigasi ke halaman Login
+2. Biarkan field email kosong
+3. Masukkan password: "passwordvalid"
+4. Klik tombol Login
 
-**Expected Result:**
+**Hasil yang Diharapkan:**
 
-- Error message: "Password is required"
-- Form should not submit
+- Pesan error: "Email wajib diisi"
+- Form tidak boleh disubmit
 
-**Actual Result:**
+**Hasil Aktual:**
 
-- No validation error
-- Form submission attempted
+- Tidak ada error validasi
+- Form tetap dicoba untuk disubmit
 
-**Test Case Reference:** TC05
-
----
-
-## Bug #004: Review Modal - Missing Rating Validation
-
-**Bug ID:** BUG-004  
-**Date:** June 15, 2025  
-**Reporter:** Test Team  
-**Severity:** Low  
-**Priority:** Medium  
-**Status:** Open
-
-**Summary:** Review form allows submission without selecting rating
-
-**Steps to Reproduce:**
-
-1. Complete order flow until review modal appears
-2. Enter review text: "Good product"
-3. Do not select any rating (leave all radio buttons unchecked)
-4. Click "Kirim" button
-
-**Expected Result:**
-
-- Error message: "Please select a rating"
-- Form should not submit
-
-**Actual Result:**
-
-- Review submitted without rating
-- No validation error shown
-
-**Test Case Reference:** TC14
+**Referensi Kasus Uji:** TC04
 
 ---
 
-## Bug #005: Review Modal - Missing Review Text Validation
+## Bug #003: Halaman Login - Tidak Ada Validasi Password
 
-**Bug ID:** BUG-005  
-**Date:** June 15, 2025  
-**Reporter:** Test Team  
-**Severity:** Low  
-**Priority:** Medium  
-**Status:** Open
+**ID Bug:** BUG-003  
+**Tanggal:** 15 Juni 2025  
+**Pelapor:** Tim Pengujian  
+**Tingkat Keparahan:** Sedang  
+**Prioritas:** Tinggi  
+**Status:** Terbuka
 
-**Summary:** Review form allows submission with empty review text
+**Ringkasan:** Form login memungkinkan submit dengan field password kosong
 
-**Steps to Reproduce:**
+**Langkah untuk Mereproduksi:**
 
-1. Complete order flow until review modal appears
-2. Select rating: 5 stars
-3. Leave review textarea empty
-4. Click "Kirim" button
+1. Navigasi ke halaman Login
+2. Masukkan email valid: "rofifaja@gmail.com"
+3. Biarkan field password kosong
+4. Klik tombol Login
 
-**Expected Result:**
+**Hasil yang Diharapkan:**
 
-- Error message: "Please enter your review"
-- Form should not submit
+- Pesan error: "Password wajib diisi"
+- Form tidak boleh disubmit
 
-**Actual Result:**
+**Hasil Aktual:**
 
-- Review submitted with empty text
-- No validation error shown
+- Tidak ada error validasi
+- Form tetap dicoba untuk disubmit
 
-**Test Case Reference:** TC15
-
----
-
-## Bug #006: General - Inconsistent Error Handling
-
-**Bug ID:** BUG-006  
-**Date:** June 15, 2025  
-**Reporter:** Test Team  
-**Severity:** Medium  
-**Priority:** Medium  
-**Status:** Open
-
-**Summary:** Application lacks consistent client-side validation across forms
-
-**Description:**
-Multiple forms throughout the application (Login, Review) do not implement proper client-side validation, leading to poor user experience and potential server-side errors.
-
-**Impact:**
-
-- Poor user experience
-- Increased server load from invalid requests
-- Potential security vulnerabilities
-
-**Recommendation:**
-Implement comprehensive client-side validation for all forms including:
-
-- Required field validation
-- Format validation (email, phone, etc.)
-- Length validation
-- Pattern matching where applicable
+**Referensi Kasus Uji:** TC05
 
 ---
 
-## Bug Summary Report
+## Bug #004: Modal Ulasan - Tidak Ada Validasi Rating
 
-| Bug ID  | Component | Severity | Status | Test Case |
-| ------- | --------- | -------- | ------ | --------- |
-| BUG-001 | Login     | Medium   | Open   | TC02      |
-| BUG-002 | Login     | Medium   | Open   | TC04      |
-| BUG-003 | Login     | Medium   | Open   | TC05      |
-| BUG-004 | Review    | Low      | Open   | TC14      |
-| BUG-005 | Review    | Low      | Open   | TC15      |
-| BUG-006 | General   | Medium   | Open   | Multiple  |
+**ID Bug:** BUG-004  
+**Tanggal:** 15 Juni 2025  
+**Pelapor:** Tim Pengujian  
+**Tingkat Keparahan:** Rendah  
+**Prioritas:** Sedang  
+**Status:** Terbuka
 
-**Total Bugs Found:** 6  
-**High Priority:** 2  
-**Medium Priority:** 3  
-**Low Priority:** 1
+**Ringkasan:** Form ulasan memungkinkan submit tanpa memilih rating
 
-## Testing Notes
+**Langkah untuk Mereproduksi:**
 
-- All bugs were discovered during systematic boundary value and equivalence partitioning testing
-- Automated tests focus on positive scenarios; negative scenarios revealed these validation issues
-- Manual testing recommended for comprehensive validation coverage
+1. Selesaikan flow pemesanan hingga modal ulasan muncul
+2. Masukkan teks ulasan: "Produk bagus"
+3. Jangan pilih rating apapun (biarkan semua radio button tidak terpilih)
+4. Klik tombol "Kirim"
+
+**Hasil yang Diharapkan:**
+
+- Pesan error: "Silakan pilih rating"
+- Form tidak boleh disubmit
+
+**Hasil Aktual:**
+
+- Ulasan berhasil dikirim tanpa rating
+- Tidak ada error validasi yang ditampilkan
+
+**Referensi Kasus Uji:** TC14
+
+---
+
+## Bug #005: Modal Ulasan - Tidak Ada Validasi Teks Ulasan
+
+**ID Bug:** BUG-005  
+**Tanggal:** 15 Juni 2025  
+**Pelapor:** Tim Pengujian  
+**Tingkat Keparahan:** Rendah  
+**Prioritas:** Sedang  
+**Status:** Terbuka
+
+**Ringkasan:** Form ulasan memungkinkan submit dengan teks ulasan kosong
+
+**Langkah untuk Mereproduksi:**
+
+1. Selesaikan flow pemesanan hingga modal ulasan muncul
+2. Pilih rating: 5 bintang
+3. Biarkan textarea ulasan kosong
+4. Klik tombol "Kirim"
+
+**Hasil yang Diharapkan:**
+
+- Pesan error: "Silakan masukkan ulasan Anda"
+- Form tidak boleh disubmit
+
+**Hasil Aktual:**
+
+- Ulasan berhasil dikirim dengan teks kosong
+- Tidak ada error validasi yang ditampilkan
+
+**Referensi Kasus Uji:** TC15
+
+---
+
+## Bug #006: Umum - Penanganan Error yang Tidak Konsisten
+
+**ID Bug:** BUG-006  
+**Tanggal:** 15 Juni 2025  
+**Pelapor:** Tim Pengujian  
+**Tingkat Keparahan:** Sedang  
+**Prioritas:** Sedang  
+**Status:** Terbuka
+
+**Ringkasan:** Aplikasi tidak memiliki validasi client-side yang konsisten di seluruh form
+
+**Deskripsi:**
+Beberapa form di seluruh aplikasi (Login, Ulasan) tidak mengimplementasikan validasi client-side yang proper, yang menyebabkan pengalaman pengguna yang buruk dan kemungkinan error server-side.
+
+**Dampak:**
+
+- Pengalaman pengguna yang buruk
+- Beban server meningkat karena request yang tidak valid
+- Potensi kerentanan keamanan
+
+**Rekomendasi:**
+Kami merekomendasikan implementasi validasi client-side yang komprehensif untuk semua form termasuk:
+
+- Validasi field wajib
+- Validasi format (email, telepon, dll.)
+- Validasi panjang karakter
+- Pattern matching jika diperlukan
+
+---
+
+## Laporan Ringkasan Bug
+
+| ID Bug  | Komponen | Tingkat Keparahan | Status  | Kasus Uji |
+| ------- | -------- | ----------------- | ------- | --------- |
+| BUG-001 | Login    | Sedang            | Terbuka | TC02      |
+| BUG-002 | Login    | Sedang            | Terbuka | TC04      |
+| BUG-003 | Login    | Sedang            | Terbuka | TC05      |
+| BUG-004 | Ulasan   | Rendah            | Terbuka | TC14      |
+| BUG-005 | Ulasan   | Rendah            | Terbuka | TC15      |
+| BUG-006 | Umum     | Sedang            | Terbuka | Multiple  |
+
+**Total Bug Ditemukan:** 6  
+**Prioritas Tinggi:** 2  
+**Prioritas Sedang:** 3  
+**Prioritas Rendah:** 1
+
+## Catatan Pengujian
+
+- Semua bug ditemukan selama pengujian sistematis boundary value dan equivalence partitioning
+- Pengujian otomatis fokus pada skenario positif; skenario negatif mengungkap masalah validasi ini
+- Kami merekomendasikan pengujian manual untuk cakupan validasi yang komprehensif
+- Tim kami siap memberikan bantuan teknis untuk perbaikan bug-bug yang ditemukan

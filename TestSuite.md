@@ -1,85 +1,89 @@
-# Test Suite: User Flow E2E Testing - RefindsppPL Application
+# Test Suite: Pengujian E2E User Flow - Aplikasi RefindsppPL
 
-## Test Scope
+## Cakupan Pengujian
 
-**Application:** RefindsppPL E-commerce Web Application  
-**Test Type:** End-to-End User Flow Testing  
-**Pages Tested:** Home → Login → Product → Detail Product → Checkout → Profile → Review (7+ pages)
+**Aplikasi:** Aplikasi Web E-commerce Refinds
+**Jenis Pengujian:** End-to-End User Flow Testing  
+**Halaman yang Diuji:** Home → Login → Produk → Detail Produk → Checkout → Profil → Ulasan (7+ halaman)
 
-## Test Framework Applied
+## Framework Pengujian yang Kami Terapkan
 
 ### 1. Equivalence Partitioning (EP)
 
-- **Valid Data Class:** Correct email format, valid password, existing products
-- **Invalid Data Class:** Incorrect email format, wrong password, non-existent data
+- **Kelas Data Valid:** Format email benar, password valid, produk yang tersedia
+- **Kelas Data Invalid:** Format email salah, password salah, data yang tidak ada
 
 ### 2. Boundary Value Analysis (BVA)
 
-- **Email:** Valid format vs invalid format boundaries
-- **Password:** Minimum length requirements
-- **Product Selection:** Available vs unavailable products
+- **Email:** Batas format valid vs invalid
+- **Password:** Persyaratan panjang minimum
+- **Pemilihan Produk:** Produk tersedia vs tidak tersedia
 
-## Test Cases
+## Kasus Uji
 
-| Test Case ID | Page/Feature   | Test Scenario                                    | Test Type | Input Data                                                  | Expected Result                         | Status    |
-| ------------ | -------------- | ------------------------------------------------ | --------- | ----------------------------------------------------------- | --------------------------------------- | --------- |
-| **TC01**     | Login          | Login with valid credentials (EP - Valid)        | Positive  | Email: "rofifaja@gmail.com", Password: "rofifaja@gmail.com" | Login successful, redirect to dashboard | ✅ Pass   |
-| **TC02**     | Login          | Login with invalid email format (EP - Invalid)   | Negative  | Email: "invalid-email", Password: "validpass"               | Error message: "Invalid email format"   | ❌ Fail\* |
-| **TC03**     | Login          | Login with wrong password (EP - Invalid)         | Negative  | Email: "rofifaja@gmail.com", Password: "wrongpass"          | Error message: "Invalid credentials"    | ❌ Fail\* |
-| **TC04**     | Login          | Login with empty email (BVA - Boundary)          | Negative  | Email: "", Password: "validpass"                            | Error message: "Email required"         | ❌ Fail\* |
-| **TC05**     | Login          | Login with empty password (BVA - Boundary)       | Negative  | Email: "rofifaja@gmail.com", Password: ""                   | Error message: "Password required"      | ❌ Fail\* |
-| **TC06**     | Product        | View product list                                | Positive  | Navigate to product page                                    | Product list displayed                  | ✅ Pass   |
-| **TC07**     | Product        | Select available product (EP - Valid)            | Positive  | Click on "debitis" product                                  | Navigate to detail page                 | ✅ Pass   |
-| **TC08**     | Detail Product | Order available product                          | Positive  | Click "Pesan" button                                        | Redirect to WhatsApp                    | ✅ Pass   |
-| **TC09**     | Checkout       | WhatsApp redirect validation                     | Positive  | After clicking Pesan                                        | URL contains "wa.me" or "whatsapp"      | ✅ Pass   |
-| **TC10**     | Profile        | Navigate to profile page                         | Positive  | Profile button → Profile menu                               | Navigate to profile page                | ✅ Pass   |
-| **TC11**     | Profile        | Access purchase history                          | Positive  | Click "Pembelian" tab                                       | Purchase tab activated                  | ✅ Pass   |
-| **TC12**     | Profile        | Complete order process                           | Positive  | Click "Pesanan Selesai"                                     | Alert appears                           | ✅ Pass   |
-| **TC13**     | Review         | Submit review with valid rating (EP - Valid)     | Positive  | Rating: 5, Review: "lorem ipsum"                            | Review submitted successfully           | ✅ Pass   |
-| **TC14**     | Review         | Submit review with empty rating (BVA - Boundary) | Negative  | Rating: none, Review: "test"                                | Error: "Rating required"                | ❌ Fail\* |
-| **TC15**     | Review         | Submit review with empty text (BVA - Boundary)   | Negative  | Rating: 5, Review: ""                                       | Error: "Review text required"           | ❌ Fail\* |
+| ID Kasus Uji | Halaman/Fitur | Skenario Pengujian                                  | Jenis Uji | Data Input                                                  | Hasil yang Diharapkan                   | Status     |
+| ------------ | ------------- | --------------------------------------------------- | --------- | ----------------------------------------------------------- | --------------------------------------- | ---------- |
+| **TC01**     | Login         | Login dengan kredensial valid (EP - Valid)          | Positif   | Email: "rofifaja@gmail.com", Password: "rofifaja@gmail.com" | Login berhasil, redirect ke dashboard   | ✅ Lulus   |
+| **TC02**     | Login         | Login dengan format email invalid (EP - Invalid)    | Negatif   | Email: "email-invalid", Password: "passwordvalid"           | Pesan error: "Format email tidak valid" | ❌ Gagal\* |
+| **TC03**     | Login         | Login dengan password salah (EP - Invalid)          | Negatif   | Email: "rofifaja@gmail.com", Password: "passwordsalah"      | Pesan error: "Kredensial tidak valid"   | ❌ Gagal\* |
+| **TC04**     | Login         | Login dengan email kosong (BVA - Boundary)          | Negatif   | Email: "", Password: "passwordvalid"                        | Pesan error: "Email wajib diisi"        | ❌ Gagal\* |
+| **TC05**     | Login         | Login dengan password kosong (BVA - Boundary)       | Negatif   | Email: "rofifaja@gmail.com", Password: ""                   | Pesan error: "Password wajib diisi"     | ❌ Gagal\* |
+| **TC06**     | Produk        | Melihat daftar produk                               | Positif   | Navigasi ke halaman produk                                  | Daftar produk ditampilkan               | ✅ Lulus   |
+| **TC07**     | Produk        | Memilih produk yang tersedia (EP - Valid)           | Positif   | Klik produk "debitis"                                       | Navigasi ke halaman detail              | ✅ Lulus   |
+| **TC08**     | Detail Produk | Memesan produk yang tersedia                        | Positif   | Klik tombol "Pesan"                                         | Redirect ke WhatsApp                    | ✅ Lulus   |
+| **TC09**     | Checkout      | Validasi redirect WhatsApp                          | Positif   | Setelah klik Pesan                                          | URL mengandung "wa.me" atau "whatsapp"  | ✅ Lulus   |
+| **TC10**     | Profil        | Navigasi ke halaman profil                          | Positif   | Tombol Profil → Menu Profil                                 | Navigasi ke halaman profil              | ✅ Lulus   |
+| **TC11**     | Profil        | Mengakses riwayat pembelian                         | Positif   | Klik tab "Pembelian"                                        | Tab pembelian teraktivasi               | ✅ Lulus   |
+| **TC12**     | Profil        | Menyelesaikan proses pesanan                        | Positif   | Klik "Pesanan Selesai"                                      | Alert muncul                            | ✅ Lulus   |
+| **TC13**     | Ulasan        | Mengirim ulasan dengan rating valid (EP - Valid)    | Positif   | Rating: 5, Ulasan: "lorem ipsum"                            | Ulasan berhasil dikirim                 | ✅ Lulus   |
+| **TC14**     | Ulasan        | Mengirim ulasan tanpa rating (BVA - Boundary)       | Negatif   | Rating: tidak dipilih, Ulasan: "test"                       | Error: "Rating wajib dipilih"           | ❌ Gagal\* |
+| **TC15**     | Ulasan        | Mengirim ulasan dengan teks kosong (BVA - Boundary) | Negatif   | Rating: 5, Ulasan: ""                                       | Error: "Teks ulasan wajib diisi"        | ❌ Gagal\* |
 
-**Legend:**  
-✅ Pass - Test case executed successfully  
-❌ Fail\* - Test case failed due to application bug (documented in Bug Report)
+**Keterangan:**  
+✅ Lulus - Kasus uji berhasil kami eksekusi  
+❌ Gagal\* - Kasus uji gagal karena bug aplikasi (kami dokumentasikan dalam Laporan Bug)
 
-## Test Execution Summary
+## Ringkasan Eksekusi Pengujian
 
-- **Total Test Cases:** 15
-- **Passed:** 9
-- **Failed:** 6 (due to application bugs)
-- **Test Coverage:** 7+ pages (Home, Login, Product, Detail, Checkout, Profile, Review)
+- **Total Kasus Uji:** 15
+- **Lulus:** 9
+- **Gagal:** 6 (karena bug aplikasi)
+- **Cakupan Uji:** 7+ halaman (Home, Login, Produk, Detail, Checkout, Profil, Ulasan)
 
 ## Boundary Value & Equivalence Classes
 
-### Login Page
+### Halaman Login
 
-- **Valid Email Class:** Contains "@" and "." with proper format
-- **Invalid Email Class:** Missing "@", missing ".", incorrect format
-- **Valid Password Class:** Non-empty strings
-- **Invalid Password Class:** Empty strings, null values
+- **Kelas Email Valid:** Mengandung "@" dan "." dengan format yang benar
+- **Kelas Email Invalid:** Tidak ada "@", tidak ada ".", format salah
+- **Kelas Password Valid:** String tidak kosong
+- **Kelas Password Invalid:** String kosong, nilai null
 
-### Review System
+### Sistem Ulasan
 
-- **Valid Rating Class:** Values 1-5
-- **Invalid Rating Class:** No selection, values outside 1-5
-- **Valid Review Text Class:** Non-empty strings (1-500 characters)
-- **Invalid Review Text Class:** Empty strings, excessive length
+- **Kelas Rating Valid:** Nilai 1-5
+- **Kelas Rating Invalid:** Tidak ada pilihan, nilai di luar 1-5
+- **Kelas Teks Ulasan Valid:** String tidak kosong (1-500 karakter)
+- **Kelas Teks Ulasan Invalid:** String kosong, panjang berlebihan
 
-## Test Case Management
+## Manajemen Kasus Uji
 
-_Note: These test cases can be imported into test case management tools like:_
+_Catatan: Kasus uji ini dapat kami impor ke dalam tools manajemen kasus uji seperti:_
 
 - TestRail
 - Zephyr
 - qTest
 - Azure DevOps Test Plans
 
-## Automation Coverage
+## Cakupan Otomatisasi
 
-All positive test cases (TC01, TC06-TC13) are automated using:
+Semua kasus uji positif (TC01, TC06-TC13) kami otomatisasi menggunakan:
 
 - **Framework:** Cucumber + Selenium WebDriver
 - **Pattern:** Page Object Model (POM)
-- **Language:** Java
+- **Bahasa:** Java
 - **Test Runner:** JUnit
+
+## Kesimpulan
+
+Pengujian yang kami lakukan telah mengcover flow lengkap dari login hingga pengiriman ulasan. Kami menemukan 6 bug terkait validasi input yang perlu diperbaiki untuk meningkatkan user experience dan keamanan aplikasi. Tim kami merekomendasikan perbaikan validasi client-side untuk semua form input guna memberikan feedback yang lebih baik kepada pengguna.
